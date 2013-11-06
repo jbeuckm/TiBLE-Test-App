@@ -1,0 +1,15 @@
+<Alloy>
+	
+	<Collection src="BleDevice"/>
+	
+	<Window class="container">
+
+		<TableView dataCollection="BleDevice">
+			<TableViewRow onClick="clickRow">
+				<Label id="name" text="{name}"></Label>
+				<Label id="rssi" text="{rssi}"></Label>
+			</TableViewRow>
+		</TableView>
+
+	</Window>
+</Alloy>

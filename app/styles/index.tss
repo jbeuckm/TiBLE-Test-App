@@ -1,0 +1,14 @@
+".container": {
+	backgroundColor:"white"
+},
+
+"TableViewRow": {
+
+}
+
+"#name": {
+	left: 5
+}
+"#rssi": {
+	right: 5
+}
