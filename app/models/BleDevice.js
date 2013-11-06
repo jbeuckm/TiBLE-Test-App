@@ -27,6 +27,13 @@ exports.definition = {
     extendCollection: function(Collection) {        
         _.extend(Collection.prototype, {
 
+            comparator : function(device) {
+                var sorter = device.get('rssi');
+                if (sorter == 127) sorter = -sorter;
+                
+                return -sorter;
+            }
+
         }); // end extend
  
         return Collection;

@@ -7,7 +7,7 @@
 		<TableView dataCollection="BleDevice">
 			<TableViewRow onClick="clickRow">
 				<Label id="name" text="{name}"></Label>
-				<Label id="rssi" text="{rssi}"></Label>
+				<Label id="rssi" text="{rssi}db"></Label>
 			</TableViewRow>
 		</TableView>
 
