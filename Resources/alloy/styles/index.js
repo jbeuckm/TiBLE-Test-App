@@ -1,1 +1,0 @@
-module.exports = [{"isApi":true,"priority":1000.0003,"key":"TableViewRow","style":{}},{"isClass":true,"priority":10000.0002,"key":"container","style":{backgroundColor:"white",}},{"isId":true,"priority":100000.0004,"key":"name","style":{left:5,}},{"isId":true,"priority":100000.0005,"key":"rssi","style":{right:5,}}];
