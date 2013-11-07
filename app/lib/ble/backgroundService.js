@@ -1,13 +1,20 @@
 
-
 var ble = require("org.beuckman.tible");
+var throttle = require("throttle");
 
 ble.addEventListener("state", function(e){
 
 });
 
 ble.addEventListener("discover", function(e){
-	notify("You have a "+e.name+" nearby!");
+	
+	var event = { id: e.uuid };
+//	if (!throttle.throttleEvent(event)) {
+		
+		notify("You have a "+e.name+" nearby!");
+
+//	}
+	
 });
 ble.addEventListener("connect", function(e){
 

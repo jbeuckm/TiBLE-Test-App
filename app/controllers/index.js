@@ -24,9 +24,11 @@ ble.addEventListener("discover", function(e){
 		d.set("rssi", e.rssi);
 	}
 	else {
-		var d = Alloy.createModel("BleDevice", e);
-		Alloy.Collections.BleDevice.add(d);
+		var newDevice = Alloy.createModel("BleDevice", e);
+		Alloy.Collections.BleDevice.add(newDevice);
 	}
+	
+	alert(e);
 	
 });
 ble.addEventListener("connect", function(e){
@@ -40,7 +42,7 @@ ble.addEventListener("disconnect", function(e){
 });
 
 ble.addEventListener("services", function(e){
-//	alert(e);
+	alert(e);
 });
 ble.addEventListener("characteristics", function(e){
 	alert(e);
@@ -55,10 +57,27 @@ $.index.open();
 
 // scan for all service UUIDs
 ble.startScan();
+var backgroundService;
 
-require("ble/ble").registerService();
+Ti.App.addEventListener("pause", function(){
+	ble.stopScan();
+});
+Ti.App.addEventListener("paused", function(){
+	backgroundService = Ti.App.iOS.registerBackgroundService({
+        url: "ble/backgroundService.js"
+    });
+});
 
 
+Ti.App.addEventListener('resumed',function(e){
+
+	if (backgroundService != null){
+		backgroundService.stop();
+		backgroundService.unregister();
+	}
+
+	ble.startScan();
+});
 
 
 

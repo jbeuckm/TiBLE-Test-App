@@ -3,21 +3,20 @@ exports.definition = {
 	
 	config: {
 		"columns": {
-			uuid: 'TEXT',
-			name: 'TEXT',
-			rssi: 'INTEGER',
+			id: "TEXT",
+			lastEvent: "INTEGER"
 		},
 		"defaults": {
 		},
 		"adapter": {
 			type: "sql",
-			collection_name: "BleDevices"
+			collection_name: "ThrottleRecords"
 		}
 	},		
 
 	extendModel: function(Model) {		
 		_.extend(Model.prototype, {
-			idAttribute: "uuid"
+			idAttribute: "id"
 		}); // end extend
 		
 		return Model;
@@ -27,12 +26,6 @@ exports.definition = {
     extendCollection: function(Collection) {        
         _.extend(Collection.prototype, {
 
-            comparator : function(device) {
-                var sorter = device.get('rssi');
-                if (sorter == 127) sorter = -sorter;
-                
-                return -sorter;
-            }
 
         }); // end extend
  
