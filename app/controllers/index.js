@@ -56,8 +56,28 @@ $.index.open();
 // scan for all service UUIDs
 ble.startScan();
 
-require("ble/ble").registerService();
 
+var backgroundService;
+
+Ti.App.addEventListener("pause", function(){
+        ble.stopScan();
+});
+Ti.App.addEventListener("paused", function(){
+	backgroundService = Ti.App.iOS.registerBackgroundService({
+        url: "ble/backgroundService.js"
+    });
+});
+
+
+Ti.App.addEventListener('resumed',function(e){
+
+    if (backgroundService != null){
+        backgroundService.stop();
+        backgroundService.unregister();
+    }
+
+    ble.startScan();
+});
 
 
 
