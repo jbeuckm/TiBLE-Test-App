@@ -4,11 +4,12 @@
 	
 	<Window class="container">
 
-		<TableView dataCollection="BleDevice">
-			<TableViewRow onClick="clickRow">
-				<Label id="name" text="{name}"></Label>
-				<Label id="rssi" text="{rssi}db"></Label>
-			</TableViewRow>
+		<Label id="status"/>
+	
+		<TableView id="deviceTable" dataCollection="BleDevice">
+			
+			<Require src="deviceRow"/>
+			
 		</TableView>
 
 	</Window>

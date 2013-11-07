@@ -1,14 +1,12 @@
 ".container": {
-	backgroundColor:"white"
+	backgroundColor:"white",
+	layout: "vertical"
 },
 
-"TableViewRow": {
+"#status": {
+	top: 20
+}
+"#deviceTable": {
 
 }
 
-"#name": {
-	left: 5
-}
-"#rssi": {
-	right: 5
-}

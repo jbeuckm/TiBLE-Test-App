@@ -3,7 +3,17 @@
 var ble = require("org.beuckman.tible");
 
 ble.addEventListener("state", function(e){
-	alert(e);
+    $.status.text = e.state;
+	switch (e.state) {
+        case "on": 
+            $.status.color = "#0a0";
+           break;
+        case "off": 
+            $.status.color = "#666";
+           break;
+      default:
+          break;
+	}
 });
 
 ble.addEventListener("discover", function(e){
@@ -46,8 +56,5 @@ $.index.open();
 
 
 
-function clickRow(e) {
-	alert(e.rowData);
-}
 
 

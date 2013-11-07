@@ -1,0 +1,13 @@
+
+"TableViewRow": {
+	height: 30,
+}
+
+"#name": {
+	left: 5
+}
+"#rssi": {
+	layout:"horizontal",
+	width: Ti.UI.SIZE,
+	right: 5
+}
