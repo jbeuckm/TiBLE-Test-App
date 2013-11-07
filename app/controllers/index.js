@@ -50,12 +50,13 @@ ble.addEventListener("value", function(e){
 });
 
 
+$.index.open();
+
+
 // scan for all service UUIDs
 ble.startScan();
 
 require("ble/ble").registerService();
-
-$.index.open();
 
 
 
