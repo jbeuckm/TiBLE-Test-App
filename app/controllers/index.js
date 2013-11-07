@@ -48,6 +48,9 @@ ble.addEventListener("characteristics", function(e){
 ble.addEventListener("value", function(e){
 	alert(e);
 });
+
+
+// scan for all service UUIDs
 ble.startScan();
 
 require("ble/ble").registerService();

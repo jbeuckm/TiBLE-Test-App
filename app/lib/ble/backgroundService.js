@@ -28,7 +28,10 @@ ble.addEventListener("characteristics", function(e){
 ble.addEventListener("value", function(e){
 
 });
-ble.startScan();
+
+
+var FitbitFlexServiceUUID = "ADABFB00-6E7D-4601-BDA2-BFFAA68956BA";
+ble.startScan(FitbitFlexServiceUUID);
 
 
 function notify(msg, delay, sound) {
