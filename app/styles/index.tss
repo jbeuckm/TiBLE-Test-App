@@ -4,8 +4,23 @@
 },
 
 "#status": {
-	top: 20
+	layout: null,
+	width: Ti.UI.FILL,
+	top: 20,
+	height: 30,
+	backgroundColor: "#bbb",
 }
+"#statusLabel": {
+	color: "white",
+	font: {
+		fontWeight: "bold"
+	},
+	left: 5
+}
+'#statusSwitch': {
+	right: 5
+}
+
 "#deviceTable": {
 
 }

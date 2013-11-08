@@ -4,7 +4,10 @@
 	
 	<Window class="container">
 
-		<Label id="status"/>
+		<View id="status">
+			<Label id="statusLabel"/>
+			<Switch id="statusSwitch" onClick="statusSwitch"/>
+		</View>
 	
 		<TableView id="deviceTable" dataCollection="BleDevice">
 			

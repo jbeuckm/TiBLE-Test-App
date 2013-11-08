@@ -2,13 +2,23 @@
 
 var ble = require("org.beuckman.tible");
 
-ble.addEventListener("state", function(e){
+var FitbitFlexServiceUUID = "ADABFB00-6E7D-4601-BDA2-BFFAA68956BA";
 
+
+ble.addEventListener("state", function(e){
+	switch (e.state) {
+		case "off": 
+			ble.startScan(FitbitFlexServiceUUID);
+			break;
+	}
 });
 
 ble.addEventListener("discover", function(e){
+	Ti.API.debug(e);
 	notify("You have a "+e.name+" nearby!");
 });
+
+
 ble.addEventListener("connect", function(e){
 
 });
@@ -30,7 +40,14 @@ ble.addEventListener("value", function(e){
 });
 
 
-var FitbitFlexServiceUUID = "ADABFB00-6E7D-4601-BDA2-BFFAA68956BA";
+setInterval(function(){
+	Ti.API.debug("ble.state = "+ble.state);
+
+		ble.startScan(FitbitFlexServiceUUID);
+
+}, 2000);
+
+
 ble.startScan(FitbitFlexServiceUUID);
 
 

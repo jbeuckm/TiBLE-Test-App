@@ -2,17 +2,17 @@
 
 var ble = require("org.beuckman.tible");
 
-ble.addEventListener("state", function(e){
-    $.status.text = e.state;
+
+ble.addEventListener("state", function(e) {
+	$.statusLabel.text = "scanning "+e.state;
 	switch (e.state) {
-        case "on": 
-            $.status.color = "#0a0";
-           break;
-        case "off": 
-            $.status.color = "#666";
-           break;
-      default:
-          break;
+		case "on":
+			$.status.backgroundColor = "#7d7";
+			break;
+		case "off":
+		default:
+			$.status.backgroundColor = "#f99";
+			break;
 	}
 });
 
@@ -27,7 +27,7 @@ ble.addEventListener("discover", function(e){
 		var d = Alloy.createModel("BleDevice", e);
 		Alloy.Collections.BleDevice.add(d);
 	}
-	
+
 });
 ble.addEventListener("connect", function(e){
 	alert(e);
@@ -50,15 +50,26 @@ ble.addEventListener("value", function(e){
 });
 
 
+function statusSwitch(e) {
+	if (e.value) {
+		ble.startScan();
+	}
+	else {
+		ble.stopScan();
+	}
+}
+
+backgroundService = Ti.App.iOS.registerBackgroundService({
+    url: "ble/backgroundService.js"
+});
+
+
 $.index.open();
 
 
-// scan for all service UUIDs
-ble.startScan();
 
 
-var backgroundService;
-
+/*
 Ti.App.addEventListener("pause", function(){
         ble.stopScan();
 });
@@ -79,6 +90,5 @@ Ti.App.addEventListener('resumed',function(e){
     ble.startScan();
 });
 
-
-
+*/
 
