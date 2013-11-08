@@ -4,8 +4,12 @@ var ble = require("org.beuckman.tible");
 
 
 ble.addEventListener("state", function(e) {
-	$.statusLabel.text = "scanning "+e.state;
-	switch (e.state) {
+	updateState(e.state);
+});
+
+function updateState(state) {
+	$.status.text = "bluetooth is "+state;
+	switch (state) {
 		case "on":
 			$.status.backgroundColor = "#7d7";
 			break;
@@ -14,7 +18,7 @@ ble.addEventListener("state", function(e) {
 			$.status.backgroundColor = "#f99";
 			break;
 	}
-});
+}
 
 ble.addEventListener("discover", function(e){
 
@@ -51,13 +55,14 @@ ble.addEventListener("value", function(e){
 
 
 function statusSwitch(e) {
-	if (e.value) {
-		ble.startScan();
-	}
-	else {
-		ble.stopScan();
-	}
+
 }
+
+
+updateState(ble.state);
+ble.startScan();
+
+
 
 backgroundService = Ti.App.iOS.registerBackgroundService({
     url: "ble/backgroundService.js"
