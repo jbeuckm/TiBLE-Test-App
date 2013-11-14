@@ -1,6 +1,7 @@
 
 
 var ble = require("org.beuckman.tible");
+Alloy.Globals.ble = ble;
 
 
 ble.addEventListener("state", function(e) {
@@ -31,6 +32,8 @@ ble.addEventListener("discover", function(e){
 		var d = Alloy.createModel("BleDevice", e);
 		Alloy.Collections.BleDevice.add(d);
 	}
+	
+	alert(e.advertisementData);
 
 });
 ble.addEventListener("connect", function(e){
@@ -44,7 +47,7 @@ ble.addEventListener("disconnect", function(e){
 });
 
 ble.addEventListener("services", function(e){
-//	alert(e);
+	alert(e);
 });
 ble.addEventListener("characteristics", function(e){
 	alert(e);

@@ -4,11 +4,12 @@
 }
 
 "#name": {
+	top: 3,
 	left: 5
 }
 "#uuid": {
 	left: 5,
-	top: 20,
+	bottom: 3,
 	font: {
 		fontSize: 9
 	}
