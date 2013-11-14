@@ -1,7 +1,7 @@
 
 var args = arguments[0] || {};
 
-alert(args.$model);
+var model = args.$model;
 
 function clickRow(e) {
     alert(e);
