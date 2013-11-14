@@ -54,10 +54,6 @@ ble.addEventListener("value", function(e){
 });
 
 
-function statusSwitch(e) {
-
-}
-
 
 updateState(ble.state);
 ble.startScan();

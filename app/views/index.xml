@@ -4,7 +4,7 @@
 	
 	<Window class="container">
 
-		<Label id="status" onClick="statusSwitch"/>
+		<Label id="status"/>
 	
 		<TableView id="deviceTable" dataCollection="BleDevice">
 			
