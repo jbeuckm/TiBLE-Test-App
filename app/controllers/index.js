@@ -1,20 +1,25 @@
 
 
 var ble = require("org.beuckman.tible");
+Alloy.Globals.ble = ble;
 
-ble.addEventListener("state", function(e){
-    $.status.text = e.state;
-	switch (e.state) {
-        case "on": 
-            $.status.color = "#0a0";
-           break;
-        case "off": 
-            $.status.color = "#666";
-           break;
-      default:
-          break;
-	}
+
+ble.addEventListener("state", function(e) {
+	updateState(e.state);
 });
+
+function updateState(state) {
+	$.status.text = "bluetooth is "+state;
+	switch (state) {
+		case "on":
+			$.status.backgroundColor = "#7d7";
+			break;
+		case "off":
+		default:
+			$.status.backgroundColor = "#f99";
+			break;
+	}
+}
 
 ble.addEventListener("discover", function(e){
 
@@ -24,9 +29,16 @@ ble.addEventListener("discover", function(e){
 		d.set("rssi", e.rssi);
 	}
 	else {
+<<<<<<< HEAD
 		var newDevice = Alloy.createModel("BleDevice", e);
 		Alloy.Collections.BleDevice.add(newDevice);
+=======
+		d = Alloy.createModel("BleDevice", e);
+		Alloy.Collections.BleDevice.add(d);
+>>>>>>> temp
 	}
+
+    d.set("advertisementData", JSON.stringify(e.advertisementData));
 	
 	alert(e);
 	
@@ -47,18 +59,17 @@ ble.addEventListener("services", function(e){
 ble.addEventListener("characteristics", function(e){
 	alert(e);
 });
-ble.addEventListener("value", function(e){
+ble.addEventListener("characteristicValue", function(e){
 	alert(e);
 });
 
 
-$.index.open();
 
-
-// scan for all service UUIDs
+updateState(ble.state);
 ble.startScan();
 var backgroundService;
 
+<<<<<<< HEAD
 Ti.App.addEventListener("pause", function(){
 	ble.stopScan();
 });
@@ -78,6 +89,17 @@ Ti.App.addEventListener('resumed',function(e){
 
 	ble.startScan();
 });
+=======
+
+
+backgroundService = Ti.App.iOS.registerBackgroundService({
+    url: "ble/backgroundService.js"
+});
+
+
+$.index.open();
+
+>>>>>>> temp
 
 
 

@@ -1,10 +1,18 @@
 
 "TableViewRow": {
-	height: 30,
+	height: 45,
 }
 
 "#name": {
+	top: 3,
 	left: 5
+}
+"#uuid": {
+	left: 5,
+	bottom: 3,
+	font: {
+		fontSize: 9
+	}
 }
 "#rssi": {
 	layout:"horizontal",

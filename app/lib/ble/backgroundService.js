@@ -2,8 +2,10 @@
 var ble = require("org.beuckman.tible");
 var throttle = require("throttle");
 
-ble.addEventListener("state", function(e){
+var FitbitFlexServiceUUID = "ADABFB00-6E7D-4601-BDA2-BFFAA68956BA";
 
+
+ble.addEventListener("state", function(e){
 });
 
 ble.addEventListener("discover", function(e){
@@ -16,6 +18,8 @@ ble.addEventListener("discover", function(e){
 //	}
 	
 });
+
+
 ble.addEventListener("connect", function(e){
 
 });
@@ -37,7 +41,6 @@ ble.addEventListener("value", function(e){
 });
 
 
-var FitbitFlexServiceUUID = "ADABFB00-6E7D-4601-BDA2-BFFAA68956BA";
 ble.startScan(FitbitFlexServiceUUID);
 
 

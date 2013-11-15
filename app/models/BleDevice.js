@@ -6,6 +6,7 @@ exports.definition = {
 			uuid: 'TEXT',
 			name: 'TEXT',
 			rssi: 'INTEGER',
+			advertisementData: "TEXT"
 		},
 		"defaults": {
 		},
