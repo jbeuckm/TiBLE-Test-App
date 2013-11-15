@@ -29,12 +29,12 @@ ble.addEventListener("discover", function(e){
 		d.set("rssi", e.rssi);
 	}
 	else {
-		var d = Alloy.createModel("BleDevice", e);
+		d = Alloy.createModel("BleDevice", e);
 		Alloy.Collections.BleDevice.add(d);
 	}
-	
-	alert(e.advertisementData);
 
+    d.set("advertisementData", JSON.stringify(e.advertisementData));
+	
 });
 ble.addEventListener("connect", function(e){
 	alert(e);
@@ -52,7 +52,7 @@ ble.addEventListener("services", function(e){
 ble.addEventListener("characteristics", function(e){
 	alert(e);
 });
-ble.addEventListener("value", function(e){
+ble.addEventListener("characteristicValue", function(e){
 	alert(e);
 });
 
@@ -72,27 +72,4 @@ $.index.open();
 
 
 
-
-/*
-Ti.App.addEventListener("pause", function(){
-        ble.stopScan();
-});
-Ti.App.addEventListener("paused", function(){
-	backgroundService = Ti.App.iOS.registerBackgroundService({
-        url: "ble/backgroundService.js"
-    });
-});
-
-
-Ti.App.addEventListener('resumed',function(e){
-
-    if (backgroundService != null){
-        backgroundService.stop();
-        backgroundService.unregister();
-    }
-
-    ble.startScan();
-});
-
-*/
 
