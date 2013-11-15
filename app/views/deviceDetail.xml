@@ -1,0 +1,17 @@
+<Alloy>
+	
+	<Model src="BleDevice" instance="true" id="deviceModel"/>
+	
+	<Window id="win">
+	
+		<Label id="backButton" onClick="backButton">back</Label>
+
+		<Label text="{$.deviceModel.name}"/>
+		<Label text="{$.deviceModel.uuid}"/>
+		<TextArea id="advertisementData" value="{$.deviceModel.advertisementData}"></TextArea>
+
+		<TableView id="servicesTable"/>
+		
+	</Window>
+
+</Alloy>

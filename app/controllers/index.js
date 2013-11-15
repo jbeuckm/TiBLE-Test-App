@@ -8,7 +8,7 @@ ble.addEventListener("state", function(e) {
 });
 
 function updateState(state) {
-	$.status.text = "bluetooth is "+state;
+	$.status.text = " bluetooth is "+state;
 	switch (state) {
 		case "on":
 			$.status.backgroundColor = "#7d7";
@@ -22,52 +22,49 @@ function updateState(state) {
 
 ble.addEventListener("discover", function(e){
 
-        var d = Alloy.Collections.BleDevice.get(e.uuid);
-        
-        if (d) {
-                d.set("rssi", e.rssi);
-        }
-        else {
-                var d = Alloy.createModel("BleDevice", e);
-                d.set("advertisementData", JSON.stringify(e.advertisementData));
-                Alloy.Collections.BleDevice.add(d);
-        }
-        
-        alert(e.advertisementData);
-
-});
-ble.addEventListener("connect", function(e){
-	alert(e);
-});
-ble.addEventListener("connectFail", function(e){
-	alert(e);
-});
-ble.addEventListener("disconnect", function(e){
-	alert(e);
+    var d = Alloy.Collections.BleDevice.get(e.uuid);
+    
+    if (d) {
+            d.set("rssi", e.rssi);
+    }
+    else {
+            var d = Alloy.createModel("BleDevice", e);
+            d.set("advertisementData", JSON.stringify(e.advertisementData));
+            Alloy.Collections.BleDevice.add(d);
+    }
+    
 });
 
-ble.addEventListener("services", function(e){
-	alert(e);
+var scanning = false;
+ble.addEventListener("scanStart", function(e){
+	$.scanButton.backgroundColor = "#f99";
+	$.scanButton.title = "stop";
+	scanning = true;
 });
-ble.addEventListener("characteristics", function(e){
-	alert(e);
-});
-ble.addEventListener("characteristicValue", function(e){
-	alert(e);
+ble.addEventListener("scanStop", function(e){
+	$.scanButton.backgroundColor = "#7d7";
+	$.scanButton.title = "scan";
+	scanning = false;
 });
 
-
-
-updateState(ble.state);
-ble.startScan();
-
-var backgroundService = Ti.App.iOS.registerBackgroundService({
-    url: "ble/backgroundService.js"
-});
+function scanButton() {
+	if (scanning) {
+		ble.stopScan();
+	}
+	else {
+		ble.startScan();
+	}
+}
 
 
 $.index.open();
 
+updateState(ble.state);
 
+
+
+var backgroundService = Ti.App.iOS.registerBackgroundService({
+    url: "ble/backgroundService.js"
+});
 
 

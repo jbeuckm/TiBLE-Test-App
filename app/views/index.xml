@@ -4,7 +4,10 @@
 	
 	<Window class="container">
 
-		<Label id="status"/>
+		<View id="bleBar">
+			<Label id="status"/>
+			<Button id="scanButton" onClick="scanButton">scan</Button>
+		</View>
 	
 		<TableView id="deviceTable" dataCollection="BleDevice">
 			

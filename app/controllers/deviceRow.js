@@ -5,8 +5,8 @@ var model = args.$model;
 
 function clickRow(e) {
     
-    alert(model.get("advertisementData"));
-    
-	Alloy.Globals.ble.connectPeripheral(model.get("uuid"));
+    var detail = Alloy.createController("deviceDetail", { model: model.toJSON() });
+    detail.getView().open();
 
 }
+

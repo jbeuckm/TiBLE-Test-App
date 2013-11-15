@@ -1,0 +1,16 @@
+"#win": {
+	backgroundColor: "black",
+	layout: "vertical"
+}
+"Label": {
+	color: "white"
+}
+"#backButton": {
+	left: 5
+}
+TextArea: {
+	backgroundColor: "black"
+}
+TableView: {
+	backgroundColor: "black"
+}

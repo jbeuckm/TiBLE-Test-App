@@ -1,12 +1,24 @@
 ".container": {
-	backgroundColor:"white",
+	backgroundColor:"rgba(0,0,0,.5)",
 	layout: "vertical"
 },
+
+"#bleBar": {
+	width: Ti.UI.FILL,
+	top: 20,
+	height: 30,
+}
+
+"#scanButton": {
+	right: 0,
+	style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
+	height: 30,
+	width: 60
+}
 
 "#status": {
 	layout: null,
 	width: Ti.UI.FILL,
-	top: 20,
 	height: 30,
 	backgroundColor: "#bbb",
 
@@ -17,6 +29,6 @@
 }
 
 "#deviceTable": {
-
+	backgroundColor: "transparent"
 }
 

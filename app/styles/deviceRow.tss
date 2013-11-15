@@ -2,6 +2,9 @@
 "TableViewRow": {
 	height: 45,
 }
+"Label": {
+	color: "white"
+}
 
 "#name": {
 	top: 3,
