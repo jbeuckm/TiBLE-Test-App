@@ -1,5 +1,4 @@
 
-
 var ble = require("org.beuckman.tible");
 Alloy.Globals.ble = ble;
 
@@ -23,25 +22,19 @@ function updateState(state) {
 
 ble.addEventListener("discover", function(e){
 
-	var d = Alloy.Collections.BleDevice.get(e.uuid);
-	
-	if (d) {
-		d.set("rssi", e.rssi);
-	}
-	else {
-<<<<<<< HEAD
-		var newDevice = Alloy.createModel("BleDevice", e);
-		Alloy.Collections.BleDevice.add(newDevice);
-=======
-		d = Alloy.createModel("BleDevice", e);
-		Alloy.Collections.BleDevice.add(d);
->>>>>>> temp
-	}
+        var d = Alloy.Collections.BleDevice.get(e.uuid);
+        
+        if (d) {
+                d.set("rssi", e.rssi);
+        }
+        else {
+                var d = Alloy.createModel("BleDevice", e);
+                d.set("advertisementData", JSON.stringify(e.advertisementData));
+                Alloy.Collections.BleDevice.add(d);
+        }
+        
+        alert(e.advertisementData);
 
-    d.set("advertisementData", JSON.stringify(e.advertisementData));
-	
-	alert(e);
-	
 });
 ble.addEventListener("connect", function(e){
 	alert(e);
@@ -67,39 +60,14 @@ ble.addEventListener("characteristicValue", function(e){
 
 updateState(ble.state);
 ble.startScan();
-var backgroundService;
 
-<<<<<<< HEAD
-Ti.App.addEventListener("pause", function(){
-	ble.stopScan();
-});
-Ti.App.addEventListener("paused", function(){
-	backgroundService = Ti.App.iOS.registerBackgroundService({
-        url: "ble/backgroundService.js"
-    });
-});
-
-
-Ti.App.addEventListener('resumed',function(e){
-
-	if (backgroundService != null){
-		backgroundService.stop();
-		backgroundService.unregister();
-	}
-
-	ble.startScan();
-});
-=======
-
-
-backgroundService = Ti.App.iOS.registerBackgroundService({
+var backgroundService = Ti.App.iOS.registerBackgroundService({
     url: "ble/backgroundService.js"
 });
 
 
 $.index.open();
 
->>>>>>> temp
 
 
 

@@ -1,5 +1,6 @@
 <Alloy>
 	<TableViewRow onClick="clickRow">
+		
 		<Label id="name" text="{name}"></Label>
 		<Label id="uuid" text="{uuid}"></Label>
 
@@ -7,5 +8,6 @@
 			<Label text="{rssi}"></Label>
 			<Label >db</Label>
 		</View>
+		
 	</TableViewRow>
 </Alloy>

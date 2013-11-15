@@ -11,7 +11,7 @@ exports.definition = {
 		"defaults": {
 		},
 		"adapter": {
-			type: "sql",
+			type: "properties",
 			collection_name: "BleDevices"
 		}
 	},		
