@@ -1,5 +1,4 @@
 ".container": {
-	backgroundColor:"rgba(0,0,0,.5)",
 	layout: "vertical"
 },
 
@@ -22,13 +21,8 @@
 	height: 30,
 	backgroundColor: "#bbb",
 
-	color: "white",
 	font: {
 		fontWeight: "bold"
 	}
-}
-
-"#deviceTable": {
-	backgroundColor: "transparent"
 }
 

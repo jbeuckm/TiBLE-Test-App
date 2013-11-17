@@ -6,10 +6,11 @@
 	
 		<Label id="backButton" onClick="backButton">back</Label>
 
-		<Label text="{$.deviceModel.name}"/>
-		<Label text="{$.deviceModel.uuid}"/>
+		<Label id="deviceName" text="{$.deviceModel.name}"/>
+		<Label id="deviceUUID" text="{$.deviceModel.uuid}"/>
 		<TextArea id="advertisementData" value="{$.deviceModel.advertisementData}"></TextArea>
 
+		<ActivityIndicator id="activityIndicator" message="connecting..."/>
 		<TableView id="servicesTable"/>
 		
 	</Window>

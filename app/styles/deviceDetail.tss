@@ -1,16 +1,37 @@
 "#win": {
-	backgroundColor: "black",
-	layout: "vertical"
+	layout: "vertical",
+	top: 20,
+	backgroundColor: "white"
 }
-"Label": {
-	color: "white"
+"#activityIndicator": {
+
+}
+"#deviceName": {
+	font: {
+		fontSize: 24
+	}
+}
+"#deviceUUID": {
+	font: {
+		fontSize: 9
+	}
+}
+Label: {
+
 }
 "#backButton": {
 	left: 5
 }
 TextArea: {
-	backgroundColor: "black"
+
 }
 TableView: {
-	backgroundColor: "black"
+
+	separatorColor: "transparent"
+}
+"TableViewSection": {
+
+}
+"TableViewSection": {
+
 }
